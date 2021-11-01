@@ -3,16 +3,21 @@
     <h1><%= e.user.name %>さんとのチャット</h1>
   <% end %>
 <% end %>
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <div>
-          <%= m.content %>
-        </div>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-7 mx-auto">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="m-2">
+            <%= m.content %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-    <%= form_for @message do |f| %>
-      <%= f.text_field :content %>
-      <%= f.hidden_field :room_id, value: @room.id %>
-      <%= f.submit "送信" %>
-    <% end %>
+</div>
+<%= form_for @message do |f| %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit "送信" %>
+<% end %>
